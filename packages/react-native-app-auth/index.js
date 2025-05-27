@@ -212,6 +212,7 @@ export const authorize = ({
   iosCustomBrowser = null,
   androidAllowCustomBrowsers = null,
   androidTrustedWebActivity = false,
+  androidEphemeralBrowsingEnabled = false,
   connectionTimeoutSeconds,
   iosPrefersEphemeralSession = false,
 }) => {
@@ -243,6 +244,7 @@ export const authorize = ({
     nativeMethodArguments.push(customHeaders);
     nativeMethodArguments.push(androidAllowCustomBrowsers);
     nativeMethodArguments.push(androidTrustedWebActivity);
+    nativeMethodArguments.push(androidEphemeralBrowsingEnabled);
   }
 
   if (Platform.OS === 'ios') {

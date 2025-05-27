@@ -64,6 +64,7 @@ describe('AppAuth', () => {
     iosPrefersEphemeralSession: true,
     androidAllowCustomBrowsers: ['chrome'],
     androidTrustedWebActivity: false,
+    androidEphemeralBrowsingEnabled: false,
   };
 
   const registerConfig = {
@@ -740,7 +741,8 @@ describe('AppAuth', () => {
             false,
             config.customHeaders,
             config.androidAllowCustomBrowsers,
-            config.androidTrustedWebActivity
+            config.androidTrustedWebActivity,
+            config.androidEphemeralBrowsingEnabled
           );
         });
       });
@@ -764,7 +766,8 @@ describe('AppAuth', () => {
             false,
             config.customHeaders,
             config.androidAllowCustomBrowsers,
-            config.androidTrustedWebActivity
+            config.androidTrustedWebActivity,
+            config.androidEphemeralBrowsingEnabled
           );
         });
 
@@ -786,7 +789,8 @@ describe('AppAuth', () => {
             false,
             config.customHeaders,
             config.androidAllowCustomBrowsers,
-            config.androidTrustedWebActivity
+            config.androidTrustedWebActivity,
+            config.androidEphemeralBrowsingEnabled
           );
         });
 
@@ -808,7 +812,8 @@ describe('AppAuth', () => {
             true,
             config.customHeaders,
             config.androidAllowCustomBrowsers,
-            config.androidTrustedWebActivity
+            config.androidTrustedWebActivity,
+            config.androidEphemeralBrowsingEnabled
           );
         });
       });
@@ -839,7 +844,8 @@ describe('AppAuth', () => {
             false,
             customHeaders,
             config.androidAllowCustomBrowsers,
-            config.androidTrustedWebActivity
+            config.androidTrustedWebActivity,
+            config.androidEphemeralBrowsingEnabled
           );
         });
       });

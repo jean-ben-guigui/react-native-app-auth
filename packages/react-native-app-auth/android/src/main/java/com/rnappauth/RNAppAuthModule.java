@@ -243,6 +243,7 @@ public class RNAppAuthModule extends ReactContextBaseJavaModule implements Activ
             final ReadableMap customHeaders,
             final ReadableArray androidAllowCustomBrowsers,
             final boolean androidTrustedWebActivity,
+            final boolean androidEphemeralBrowsingEnabled,
             final Promise promise) {
         this.parseHeaderMap(customHeaders);
         final ConnectionBuilder builder = createConnectionBuilder(dangerouslyAllowInsecureHttpRequests,
@@ -277,7 +278,8 @@ public class RNAppAuthModule extends ReactContextBaseJavaModule implements Activ
                         useNonce,
                         usePKCE,
                         additionalParametersMap,
-                        androidTrustedWebActivity);
+                        androidTrustedWebActivity,
+                        androidEphemeralBrowsingEnabled);
             } catch (ActivityNotFoundException e) {
                 promise.reject("browser_not_found", e.getMessage());
             } catch (Exception e) {
@@ -308,7 +310,8 @@ public class RNAppAuthModule extends ReactContextBaseJavaModule implements Activ
                                         useNonce,
                                         usePKCE,
                                         additionalParametersMap,
-                                        androidTrustedWebActivity);
+                                        androidTrustedWebActivity,
+                                        androidEphemeralBrowsingEnabled);
                             } catch (ActivityNotFoundException e) {
                                 promise.reject("browser_not_found", e.getMessage());
                             } catch (Exception e) {
@@ -660,7 +663,8 @@ public class RNAppAuthModule extends ReactContextBaseJavaModule implements Activ
             final Boolean useNonce,
             final Boolean usePKCE,
             final Map<String, String> additionalParametersMap,
-            final Boolean androidTrustedWebActivity) {
+            final Boolean androidTrustedWebActivity,
+            final Boolean androidEphemeralBrowsingEnabled) {
 
         String scopesString = null;
 
@@ -731,6 +735,8 @@ public class RNAppAuthModule extends ReactContextBaseJavaModule implements Activ
             AuthorizationService authService = new AuthorizationService(context, appAuthConfiguration);
 
             CustomTabsIntent.Builder intentBuilder = authService.createCustomTabsIntentBuilder();
+            // Set private mode
+            intentBuilder.setEphemeralBrowsingEnabled(androidEphemeralBrowsingEnabled);
             CustomTabsIntent customTabsIntent = intentBuilder.build();
 
             if (androidTrustedWebActivity) {

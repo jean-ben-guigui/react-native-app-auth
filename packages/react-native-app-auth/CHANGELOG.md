@@ -1,5 +1,10 @@
 # react-native-app-auth
 
+## 8.0.4
+
+### Patch Changes
+- Add support for androidEphemeralBrowsingEnabled (https://developer.chrome.com/docs/android/custom-tabs/guide-ephemeral-tab)
+
 ## 8.0.3
 
 ### Patch Changes
